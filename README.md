@@ -1,38 +1,30 @@
-# Flight Delays & Cancellations Analysis
+# Flight Delays & Cancellations Analysis (Tableau)
 
-**Project Goal:**  
-Analyze US domestic flights in 2015 to identify patterns in delays and cancellations, and provide actionable insights to improve operations and reduce passenger disruption.
+**Project Goal:**
+Analyze 2015 US domestic flight data to uncover cancellation patterns and communicate insights through interactive Tableau dashboards.
 
-**Dataset:**  
-- `flights.csv` (US domestic flights operated by large carriers, 2015)  
-- Additional files available in the dataset can be used alongside `flights.csv`.
+**Dataset:**
+2015 US domestic flights operated by large carriers (Kaggle: https://www.kaggle.com/usdot/flight-delays). The raw CSVs are not stored in this repo due to size; the full analysis write-up, including design decisions, is in `Flight_Delays___Cancelation.pdf`.
 
-**Methodology:**  
-1. Data cleaning and validation (handling missing values, creating derived columns).  
-2. Exploratory Data Analysis (EDA) to identify trends in delays and cancellations.  
-3. Feature engineering: calculated metrics like `total_delay`, `delay_type`, `is_cancelled`, `month`, `weekday`, `flight_hour`.  
-4. Built three interactive Tableau visualizations to uncover insights.  
+**Dashboards (Tableau Public):**
 
-**Key Visualizations:**  
-1. **Airlines & Airports Comparison** – ranked bar charts showing average arrival/departure delay and cancellation rate.  
-2. **Delay Causes Heatmap** – stacked bar/heatmap of delay reasons (carrier, weather, NAS, security, late aircraft) by month and airport.  
-3. **Route-Level Impact** – scatter/bubble chart showing origin-destination pairs, flight volume, and average delays.
+1. **Flights Cancellation over USA** - map and bar chart of cancellations by state and day of week.
+   - Insight: Texas has the most cancellations on most days; only on Sundays does Illinois overtake it.
+   - https://public.tableau.com/app/profile/mohamed1902/viz/FlightsCancellationDashboard_16631860349350/FlightsCancellationOverUSA
 
-**Key Insights:**  
-- Top 3 airlines by average arrival delay: Airline A, B, C.  
-- Worst airports by cancellation rate: Airport X, Y.  
-- Late aircraft is the dominant cause at major hubs during peak months.  
+2. **Cancellation Causes** - breakdown of cancellation reasons.
+   - Insight: Weather is by far the largest cause (47,874 cancellations); Security is the smallest (22).
+   - https://public.tableau.com/app/profile/mohamed1902/viz/CancellationCauses1/CancellationCauses
 
-**Deliverables:**  
-- Cleaned dataset (`flights_cleaned.csv`)  
-- Tableau workbook (`Flight_Delays_Cancellation.twbx`)  
-- Dashboard screenshots (`dashboard_screenshots/`)  
-- Optional walkthrough video (`walkthrough.mp4`)  
-- Executive summary of findings and recommendations  
+3. **Airlines with Most Cancelled Flights** - cancellations per airline and cause mix per airline.
+   - Insight: Southwest Airlines Co. has the most cancellations (almost 16,000). Weather dominates overall, but for some carriers (e.g. Atlantic Southeast Airlines) National Air System issues are the top cause.
+   - https://public.tableau.com/app/profile/mohamed1902/viz/Airlineswithmostcancelledflights/Airlineswithmostcancelledflights
 
-**Skills & Tools:**  
-- Data Analysis & Cleaning (Python, pandas)  
-- Tableau Visualization & Dashboarding  
-- EDA & Metrics Analysis  
-- Geospatial Aggregation & Mapping  
-- Insight Communication & Storytelling
+**Design Notes:**
+- Single-hue sequential color scales to encode cancellation magnitude on the map and bar charts.
+- Color-blind-friendly palettes for categorical charts.
+- Cancellation cause codes aliased to full names for readability.
+
+**Tools:**
+- Tableau Public (dashboard design & publishing)
+- 2015 US DOT flight data (Kaggle)
