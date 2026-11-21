@@ -1,30 +1,60 @@
 # Flight Delays & Cancellations Analysis (Tableau)
 
-**Project Goal:**
-Analyze 2015 US domestic flight data to uncover cancellation patterns and communicate insights through interactive Tableau dashboards.
+Analysis of 2015 US domestic flight data, focused on cancellations. The results are published as three interactive dashboards on Tableau Public.
 
-**Dataset:**
-2015 US domestic flights operated by large carriers (Kaggle: https://www.kaggle.com/usdot/flight-delays). The raw CSVs are not stored in this repo due to size; the full analysis write-up, including design decisions, is in `Flight_Delays___Cancelation.pdf`.
+## Dataset
 
-**Dashboards (Tableau Public):**
+2015 US domestic flights operated by large carriers ([Kaggle: 2015 Flight Delays and Cancellations](https://www.kaggle.com/usdot/flight-delays)). The raw CSV files are not stored in this repo because of their size. Cancellation reason codes are explained in [docs/cancellation_cause_codes.md](docs/cancellation_cause_codes.md).
 
-1. **Flights Cancellation over USA** - map and bar chart of cancellations by state and day of week.
-   - Insight: Texas has the most cancellations on most days; only on Sundays does Illinois overtake it.
-   - https://public.tableau.com/app/profile/mohamed1902/viz/FlightsCancellationDashboard_16631860349350/FlightsCancellationOverUSA
+## Dashboards (Tableau Public)
 
-2. **Cancellation Causes** - breakdown of cancellation reasons.
-   - Insight: Weather is by far the largest cause (47,874 cancellations); Security is the smallest (22).
-   - https://public.tableau.com/app/profile/mohamed1902/viz/CancellationCauses1/CancellationCauses
+### 1. Flights Cancellation over USA
 
-3. **Airlines with Most Cancelled Flights** - cancellations per airline and cause mix per airline.
-   - Insight: Southwest Airlines Co. has the most cancellations (almost 16,000). Weather dominates overall, but for some carriers (e.g. Atlantic Southeast Airlines) National Air System issues are the top cause.
-   - https://public.tableau.com/app/profile/mohamed1902/viz/Airlineswithmostcancelledflights/Airlineswithmostcancelledflights
+A map and a bar chart of cancelled flights by state, with a filter for the day of the week.
 
-**Design Notes:**
-- Single-hue sequential color scales to encode cancellation magnitude on the map and bar charts.
-- Color-blind-friendly palettes for categorical charts.
-- Cancellation cause codes aliased to full names for readability.
+- Texas has the most cancellations on most days. Only on Sunday does Illinois overtake it.
+- [Open the dashboard](https://public.tableau.com/app/profile/mohamed1902/viz/FlightsCancellationDashboard_16631860349350/FlightsCancellationOverUSA)
 
-**Tools:**
-- Tableau Public (dashboard design & publishing)
+![Flights Cancellation over USA](images/01_cancellations_by_state_and_day.png)
+
+### 2. Cancellation Causes
+
+A pie chart of all cancellation reasons.
+
+- Weather is by far the largest cause (47,874 cancellations). Security is the smallest (22).
+- [Open the dashboard](https://public.tableau.com/app/profile/mohamed1902/viz/CancellationCauses1/CancellationCauses)
+- A second version of the same view as a bar chart: [open](https://public.tableau.com/app/profile/mohamed1902/viz/CancellationCauses_16631900389580/CancellationCauses)
+
+![Cancellation Causes](images/02_cancellation_causes_pie.png)
+
+### 3. Airlines with Most Cancelled Flights
+
+Two bar charts: cancellations per airline, and the cause mix for each airline.
+
+- Southwest Airlines Co. has the most cancellations (almost 16,000).
+- Weather is the top cause overall, but for some airlines, like Atlantic Southeast Airlines, National Air System is the top cause.
+- [Open the dashboard](https://public.tableau.com/app/profile/mohamed1902/viz/Airlineswithmostcancelledflights/Airlineswithmostcancelledflights)
+
+![Airlines with Most Cancelled Flights](images/03_airlines_and_causes.png)
+
+## Design Notes
+
+- One color that gets lighter or darker with the number of cancelled flights, on the map and the bar charts.
+- Color-blind-friendly palettes for the charts with categories.
+- Cancellation cause codes (A, B, C, D) renamed to full names so they are easy to read.
+
+## Repo Structure
+
+```
+README.md
+docs/
+  Flight_Delays_Cancellations_Report.pdf   full write-up (3 pages)
+  cancellation_cause_codes.md              what A, B, C, D mean
+images/                                    screenshots of the dashboards
+old/                                       the original README and PDF name
+```
+
+## Tools
+
+- Tableau Public (dashboard design and publishing)
 - 2015 US DOT flight data (Kaggle)
